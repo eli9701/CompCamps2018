@@ -1,7 +1,7 @@
 import random
 import sys
 name = input("who dares challenge the MITs? ")
-health = 60
+health = 40
 class MIT:
     """MITs - The Enemies."""
     def __init__(self, name):
@@ -22,7 +22,7 @@ mits = [
     MIT("kaitlen"),
     MIT("bennett"),
     MIT("austin"),
-    MIT("rhiannon"),
+    MIT("rhy rhy"),
     MIT("travis")
         ]
 
@@ -31,16 +31,23 @@ score = 0
 
 while len(mits) > 0:
     mit = mits.pop()
-    print("A wild {} appears! they have {}".format(mit.name, mit.health))
+    print("A wild {} appears! they have {} health".format(mit.name, mit.health))
     while mit.isAlive():
         print("you have {} health".format(health))
-        print("do you want to fight or retreat")
-        if input("fight/retreat >").lower() == "fight":
+        print("do you want to fight or retreat or rest")
+        action = input("fight/retreat/rest >")
+        print (action.lower() == "rest")
+        if action.lower() == "fight":
             damage = mit.attack()
             score += damage
 
             print("you did {} damage!".format(damage))
             health -= mit.damage
+        elif action.lower() == "rest":
+            rest = random.randint(5,15)
+            health += rest
+            print("you have rested and healed {} health".format(rest))
+            damage = mit.attack()
         else:
             Caught = random.randint(1,5) == 1
             if not Caught:
