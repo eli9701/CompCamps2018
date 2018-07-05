@@ -11,3 +11,4 @@ class MIT:
         self.image = "images/" + self.name.lower() + ".png"
         self.img = pygame.image.load(self.image)
         self.img = pygame.transform.scale(self.img,(100,100))
+        self.health = 30
